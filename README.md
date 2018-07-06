@@ -20,6 +20,7 @@ Flow diagram:
 
 ### Directory Structure:
 
+```
 .
 ├── classes
 │   ├── bbobbenchmarks.py
@@ -65,6 +66,7 @@ Flow diagram:
     │   └── 9.npy
     ├── F1.npy
     └── process_data.py
+```
 
 8 directories, 36 files
 
