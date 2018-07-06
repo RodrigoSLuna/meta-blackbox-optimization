@@ -20,11 +20,33 @@ Flow diagram:
 
 ### Directory Structure:
 
-        ...
+```
+.
+│   README.md
+│   file001.txt
+│
+└───classes
+│   │   function.py
+│   │   optimizer.py
+│   │   trainer.py
+│   │   evaluator.py
+│   │   visualizer.py
+│   │
+│   └───subfolder1
+│       │   file111.txt
+│       │   file112.txt
+│       │   ...
+│
+└───folder2
+    │   file021.txt
+    │   file022.txt
+```
+
 
 ### Class Structure:
 
 #####    FUNCTION:
+
         import bbobbenchmarks as bn     // import functions from bbob
         f = bn.F1(1)                    // define which function to optimize from bbob file
         f.domain = [-5, 5]              // define domain interval
@@ -33,16 +55,16 @@ Flow diagram:
 #####    OPTIMIZER
 - Input: configuration file (YAML)
 
-| configuration |   type | description | possible values |
-| :-----------: | :----: | :---------: | :-------------: |
-| max_steps                     | int |criteria to finish | >= 1 
-| nb_samples             | int | number of x sampled | >= 1 |
-| size_hf | int | dimension of in_hf | >= 1 |
-| init_hf_strategy | string | define how hf is initialized | "zero" |
-| hf_strategy              | string |  define how in_hf is choosen | "random" or "gagne" |
-| best_meta_point_strategy  | string | define how the best meta point is choosen | "random" or "lowest" |
-|   meta_model  | string | load neural network from file.h5 | "file.h5" |
-| generate_train_file          | string | save train_file | "file_name" or None |
+| configuration            | type   | possible values      | description                               |
+| :----------------------: | :----: | :------------------: | :-------------:                           |
+| max_steps                | int    | >= 1                 | criteria to finish                        |
+| nb_samples               | int    | >= 1                 | number of x sampled                       |
+| size\_hf                 | int    | >= 1                 | dimension of in_hf                        |
+| init\_hf\_strategy       | string | "zero"               | define how hf is initialized              |
+| hf\_strategy             | string | "random" or "gagne"  | define how in_hf is choosen               |
+| best_meta_point_strategy | string | "random" or "lowest" | define how the best meta point is choosen |
+| meta_model               | string | "file.h5"            | load neural network from file.h5          |
+| generate_train_file      | string | "file\_name" or None | save train_file                           |
 
 - Output: numpy array
     
