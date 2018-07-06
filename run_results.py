@@ -9,7 +9,7 @@ import models.metamodel as metamodel
 
 
 #Define problem
-f = bn.F2(1)
+f = bn.F1(1)
 f.domain = [-5, 5]
 f.dimension = 2
 
@@ -27,7 +27,7 @@ meta_search = opt.Meta_Search_Optimizer(metamodel, best_meta_point_strategy="low
 #steps, done = meta_search.optimze(f)
 
 #Evaluator:
-evaluator = ev.Absvalue_Evaluator(nb_trials=100)
+evaluator = ev.Absvalue_Evaluator(nb_trials=10)
 
 #Evaluate:
 d_random = evaluator.evaluate(f, random_search)

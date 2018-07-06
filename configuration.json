@@ -1,0 +1,8 @@
+{
+    "meta_model": "new",  // new or file.h5
+    "init_hf_strategy": "zero",  // zero
+    "best_meta_point_strategy": "lowest",
+
+
+
+}
