@@ -20,27 +20,53 @@ Flow diagram:
 
 ### Directory Structure:
 
-```
 .
-│   README.md
-│   file001.txt
-│
-└───classes
-│   │   function.py
-│   │   optimizer.py
-│   │   trainer.py
-│   │   evaluator.py
-│   │   visualizer.py
-│   │
-│   └───subfolder1
-│       │   file111.txt
-│       │   file112.txt
-│       │   ...
-│
-└───folder2
-    │   file021.txt
-    │   file022.txt
-```
+├── classes
+│   ├── bbobbenchmarks.py
+│   ├── evaluators.py
+│   ├── optimizers.py
+│   ├── __pycache__
+│   │   ├── bbobbenchmarks.cpython-36.pyc
+│   │   ├── evaluators.cpython-36.pyc
+│   │   └── optimizers.cpython-36.pyc
+│   └── visualizer.py
+├── configuration.json
+├── documentation
+│   ├── GLOL_blackbox_optimizer.png
+│   ├── GLOL_diagram_flow.png
+│   └── GLOL_steps.png
+├── generate_train_data.py
+├── main.py
+├── models
+│   ├── 0.npy
+│   ├── metamodel.h5
+│   ├── metamodel.py
+│   ├── __pycache__
+│   │   ├── metamodel.cpython-36.pyc
+│   │   └── metamodels.cpython-36.pyc
+│   └── train_metamodel.py
+├── README2.md
+├── README.md
+├── results
+│   ├── index.html
+│   └── Results.ipynb
+├── run_results.py
+└── train_data
+    ├── F1
+    │   ├── 0.npy
+    │   ├── 1.npy
+    │   ├── 2.npy
+    │   ├── 3.npy
+    │   ├── 4.npy
+    │   ├── 5.npy
+    │   ├── 6.npy
+    │   ├── 7.npy
+    │   ├── 8.npy
+    │   └── 9.npy
+    ├── F1.npy
+    └── process_data.py
+
+8 directories, 36 files
 
 
 ### Class Structure:
