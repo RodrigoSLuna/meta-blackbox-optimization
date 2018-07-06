@@ -1,6 +1,6 @@
 # Generic Learning to Optimize Library
 
-![N|Solid](https://www.researchgate.net/profile/Nacim_Belkhir/publication/322035981/figure/fig1/AS:574906124910592@1514079709331/black-box-Optimization.png)
+![Alt text](documentation/GLOL_blackbox_optimizer.png?raw=true "BlackBox Optimizer")
 
 GLOL is a Python library that aims to easily allow evaluating different algorithms through a declarative configuration interface.
 
@@ -16,7 +16,7 @@ GLOL is a Python library that aims to easily allow evaluating different algorith
 
 Flow diagram:
 
-![Alt text](documentation/GLOL_diagram_flow.png?raw=true "Title")
+![Alt text](documentation/GLOL_diagram_flow.png?raw=true "Flow diagram of GLOL")
 
 ### Directory Structure:
 
@@ -30,7 +30,7 @@ Flow diagram:
         f.domain = [-5, 5]              // define domain interval
         f.dimension = 2                 // define input dimension
 
-####    OPTIMIZER
+#####    OPTIMIZER
 - Input: configuration file (YAML)
 
 | configuration |   type | description | possible values |
@@ -46,16 +46,15 @@ Flow diagram:
 
 - Output: numpy array
     
-    ![N|Solid](https://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7D%20%5B%5Cmathrm%7Bx_0%7D%2C%20%26%20%5Cmathrm%7Bhf_0%7D%2C%20%26%20%5Cmathrm%7By_0%7D%5D%5C%5C%20%5B...%2C%20%26%20...%2C%20%26%20...%5D%20%5C%5C%20%5B%5Cmathrm%7Bx_t%7D%2C%20%26%20%5Cmathrm%7Bhf_t%7D%2C%20%26%20%5Cmathrm%7By_t%7D%5D%20%5Cend%7Bbmatrix%7D%5Cleft.%5Cbegin%7Bmatrix%7D%20%26%20%26%20%5C%5C%20%26%20%26%20%5Cend%7Bmatrix%7D%5Cright%5C%7D%20%5Cmathrm%7Bmax%5C_size%20%3D%20max%5C_steps%7D)]
+    ![Alt text](documentation/GLOL_steps.png?raw=true "steps")
 
-
-####    TRAINER
+#####    TRAINER
 
 - Input: model (h5 file), steps data (np.array) 
 - Description: Trainer will fit the model with data
 - Output: trained_model (h5 file)
 
-####    EVALUATOR
+#####    EVALUATOR
 
         import classes.evaluators as ev
         evaluator = ev.Evaluator(mode="best_value_mean", folder="F1/simple_meta_search")
@@ -68,7 +67,7 @@ Flow diagram:
 
 - Output: info (np.array)
 
-####    VISUALIZER
+#####    VISUALIZER
 
 TODO
 
