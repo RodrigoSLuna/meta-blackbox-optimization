@@ -20,7 +20,7 @@ metamodel = metamodel.Metamodel()
 for i in range(10):
 
     #Optimizers:
-    meta_search = opt.Meta_Search_Optimizer(metamodel, train=True, output_file=str(i))
+    meta_search = opt.Meta_Search_Optimizer(metamodel, train=True, output_file="F1/" + str(i))
 
     #Optimize:
     steps, done = meta_search.optimize(f)

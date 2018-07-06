@@ -9,7 +9,7 @@ import models.metamodel as metamodel
 
 
 #Define problem
-f = bn.F1(1)
+f = bn.F2(1)
 f.domain = [-5, 5]
 f.dimension = 2
 
