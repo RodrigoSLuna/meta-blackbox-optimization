@@ -23,62 +23,62 @@ Flow diagram:
 ```
 .
 ├── classes
-│   ├── bbobbenchmarks.py
 │   ├── evaluators.py
+│   ├── functions.py
 │   ├── optimizers.py
-│   ├── __pycache__
-│   │   ├── bbobbenchmarks.cpython-36.pyc
-│   │   ├── evaluators.cpython-36.pyc
-│   │   └── optimizers.cpython-36.pyc
-│   └── visualizer.py
+│   ├── trainers.py
+│   └── visualizers.py
 ├── configuration.json
+├── data
+│   ├── models
+│   │   ├── 0.npy
+│   │   ├── metamodel.h5
+│   │   ├── metamodel.py
+│   │   ├── __pycache__
+│   │   │   ├── metamodel.cpython-36.pyc
+│   │   │   └── metamodels.cpython-36.pyc
+│   │   └── train_metamodel.py
+│   └── train_data
+│       ├── F1
+│       │   ├── 0.npy
+│       │   ├── 1.npy
+│       │   ├── 2.npy
+│       │   ├── 3.npy
+│       │   ├── 4.npy
+│       │   ├── 5.npy
+│       │   ├── 6.npy
+│       │   ├── 7.npy
+│       │   ├── 8.npy
+│       │   └── 9.npy
+│       ├── F1.npy
+│       └── process_data.py
 ├── documentation
 │   ├── GLOL_blackbox_optimizer.png
 │   ├── GLOL_diagram_flow.png
 │   └── GLOL_steps.png
 ├── generate_train_data.py
 ├── main.py
-├── models
-│   ├── 0.npy
-│   ├── metamodel.h5
-│   ├── metamodel.py
-│   ├── __pycache__
-│   │   ├── metamodel.cpython-36.pyc
-│   │   └── metamodels.cpython-36.pyc
-│   └── train_metamodel.py
-├── README2.md
 ├── README.md
 ├── results
 │   ├── index.html
 │   └── Results.ipynb
-├── run_results.py
-└── train_data
-    ├── F1
-    │   ├── 0.npy
-    │   ├── 1.npy
-    │   ├── 2.npy
-    │   ├── 3.npy
-    │   ├── 4.npy
-    │   ├── 5.npy
-    │   ├── 6.npy
-    │   ├── 7.npy
-    │   ├── 8.npy
-    │   └── 9.npy
-    ├── F1.npy
-    └── process_data.py
+└── run_results.py
+
 ```
 
-8 directories, 36 files
+9 directories, 36 files
 
 
 ### Class Structure:
 
 #####    FUNCTION:
 
+        ```python
         import bbobbenchmarks as bn     // import functions from bbob
         f = bn.F1(1)                    // define which function to optimize from bbob file
         f.domain = [-5, 5]              // define domain interval
         f.dimension = 2                 // define input dimension
+        ```
 
 #####    OPTIMIZER
 - Input: configuration file (YAML)
@@ -122,4 +122,22 @@ Flow diagram:
 TODO
 
 
+### Algorithms:
 
+Simple Metasearch:
+
+1) Choose points
+
+2) Choose curr_history
+
+3) Process Metalmodel:
+            ______
+    Xt -----|     |
+            |     |---- M(y)   for all Xt
+    Hf -----|_____|
+
+4) Select Best Point
+
+5) Evaluate x in f: f(x) = y
+
+6) Update your history
