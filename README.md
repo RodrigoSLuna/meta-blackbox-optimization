@@ -22,52 +22,40 @@ Flow diagram:
 
 ```
 .
-├── classes
+├── classes                         //Implementation of main classes
 │   ├── evaluators.py
 │   ├── functions.py
+│   ├── models.py
 │   ├── optimizers.py
 │   ├── trainers.py
 │   └── visualizers.py
-├── configuration.json
 ├── data
-│   ├── models
-│   │   ├── 0.npy
-│   │   ├── metamodel.h5
-│   │   ├── metamodel.py
-│   │   ├── __pycache__
-│   │   │   ├── metamodel.cpython-36.pyc
-│   │   │   └── metamodels.cpython-36.pyc
-│   │   └── train_metamodel.py
-│   └── train_data
-│       ├── F1
-│       │   ├── 0.npy
-│       │   ├── 1.npy
-│       │   ├── 2.npy
-│       │   ├── 3.npy
-│       │   ├── 4.npy
-│       │   ├── 5.npy
-│       │   ├── 6.npy
-│       │   ├── 7.npy
-│       │   ├── 8.npy
-│       │   └── 9.npy
-│       ├── F1.npy
-│       └── process_data.py
-├── documentation
+│   ├── configuration.json          -> experiment configuration 
+│   ├── dataset                     -> experiment output (each folder)
+│   │   └── experiment0                 -> experiment name
+│   │       ├── description.txt               -> experiment description
+│   │       └── steps.npy                     -> optimizer output
+│   └── dnn                         -> different keras dnn
+│       ├── generate_dnn.py             -> run to generate nn model
+│       └── metamodel.h5                -> dnn keras model
+├── documentation                   -> more information
 │   ├── GLOL_blackbox_optimizer.png
 │   ├── GLOL_diagram_flow.png
-│   └── GLOL_steps.png
-├── generate_train_data.py
-├── main.py
-├── README.md
-├── results
+│   ├── GLOL_steps.png
+│   └── simple_example.py
+├── main.py                         -> run an experiment
+├── README.md                       -> README
+├── results                         -> jupyter notebooks with some results
 │   ├── index.html
 │   └── Results.ipynb
-└── run_results.py
-
+└── To be Deleted                   -> Future versions will be deleted
+    ├── generate_train_data.py
+    ├── main.py
+    ├── process_data.py
+    └── run_results.py
 ```
 
-9 directories, 36 files
-
+8 directories, 23 files
 
 ### Class Structure:
 
