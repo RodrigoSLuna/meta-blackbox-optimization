@@ -1,0 +1,22 @@
+{
+    "experiment": {
+        "type": "random",
+        "runs": 1,
+        "test_interval": 0,
+        "max_evaluations": 10,
+        "function": {
+            "type": "F1.1",
+            "dimension": 2,
+            "domain": [-5, 5]
+        },
+        "optimizer": {
+            "type": "random"
+        },
+        "evaluator": {
+            "type": null
+        },
+        "visualizer": {
+            "type": null
+        }
+    }
+}

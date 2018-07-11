@@ -8,7 +8,43 @@ class Optimizer(ABC):
         self.configuration = configuration
 
     @abstractmethod
-    def optimize(self, f):
+    def meta_points(self):
+        pass
+
+    @abstractmethod
+    def hf(self):
+        pass
+
+    @abstractmethod
+    def predictions(self,meta_points, curr_hf):
+        pass
+
+    @abstractmethod
+    def best_point(self, meta_points, meta_evaluations):
+        pass
+
+    @abstractmethod
+    def update(self, info):
+        pass
+
+class Meta_Random_Search_Optimizer(Optimizer):
+
+    def __init__(self):
+        pass
+
+    def meta_points(self):
+        pass
+
+    def hf(self):
+        pass
+
+    def predictions(self, meta_points, curr_hf):
+        pass
+
+    def best_point(self, meta_points, meta_evaluations):
+        pass
+
+    def update(self, info):
         pass
 
 class Random_Search_Optimizer(Optimizer):
