@@ -1,26 +1,19 @@
 import numpy as np
 from tqdm import tqdm
 
-class Random_Search_Optimizer:
+from abc import ABC, abstractmethod
+class Optimizer(ABC):
+
+    def __init__(self, configuration):
+        self.configuration = configuration
+
+    @abstractmethod
+    def optimize(self, f):
+        pass
+
+class Random_Search_Optimizer(Optimizer):
     
-    '''Random Search Optimizer
-       
-       @init:
-       max_steps = max number of iterations
-       verbose = True shows progress bar
-       
-       @optimize:
-           *input:
-               f = function to be optimized
-               warning: 
-                   - f.opt = optimal value
-                   - f.domain = interval to search, e.g. [-5, 5]
-                   - f.dimension = dimension of the function
-           *output:
-               np.array([[best_x, best_y, step], [best_x, best_y, step], ...]), True if optimal point
-    '''
-    
-    def __init__(self, max_steps=1000, verbose=1):
+    def __init__(self, max_steps=1000, verbose=0):
         self.max_steps = max_steps
         self.verbose = verbose
     

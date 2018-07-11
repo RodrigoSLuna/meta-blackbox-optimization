@@ -1,13 +1,31 @@
 {
-    "meta_model": "new",                    // new or file.h5
-    "init_hf_strategy": "zero",             // zero
-    "best_meta_point_strategy": "lowest",   //lowest or random
-    "hf_strategy": "random",                // random (or gagne)
-    "nb_samples": 10,                       // int number
-    "size_hf": 5,                           // int number
-    "max_steps": 1000,                      // criteria to finish 
-    "generate_train_file": "True",          //True of False
-    
-
-
+    "experiment": {
+        "type": "online_learning",
+        "runs": 1,
+        "test_interval": 0,
+        "function": {
+            "type": "F1.1",
+            "dimension": 2,
+            "domain": [-5, 5]
+        },
+        "optimizer": {
+            "type": "meta_model_learning",
+            "choose_points": "random",
+            "choose_curr_hist": "random",
+            "select_best_point": "random",
+            "model": {
+                "type": "dnn",
+                "path": "data/models/metamodel.h5"
+            }
+        },
+        "trainer": {
+            "type": null
+        },
+        "evaluator": {
+            "type": null
+        },
+        "visualizer": {
+            "type": null
+        }
+    }
 }

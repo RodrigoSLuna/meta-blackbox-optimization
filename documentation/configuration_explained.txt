@@ -1,0 +1,73 @@
+It has some entities. Each entity has type and configuration
+
+    1) experiment: 
+        - It controls the flow of information
+        can be defined:
+
+            type: "meta_online_learning"
+            runs: int >= 1
+            test_interval: int >= 0
+
+    2) function:
+        - interface with a black-box function
+        type: [list of names] from coco_functions.py
+        dimension: int >= 1
+        domain: [int min, max]
+
+    3) optimizer:
+        - interface with optimizer methods
+        type: "meta_model_learning"
+        choose_points: "name of the strategy"
+        choose_curr_hist: "name of the strategy"
+        select_best_point: "name of the strategy"
+
+    4) model:
+        - interface with dnn
+        type: "dnn"
+        path: "path of the .h5 file"
+
+    5) trainer:
+        - uses steps.npy to train the model
+        type: ?
+
+    6) evaluator:
+        - 
+        type: ?
+
+    7) visualizer:
+        -
+        type: ?
+
+Simples example:
+
+{
+    "experiment": {
+        "type": "online_learning",
+        "runs": 1,
+        "test_interval": 0,
+        "function": {
+            "type": "F1.1",
+            "dimension": 2,
+            "domain": [-5, 5]
+        },
+        "optimizer": {
+            "type": "meta_model_learning",
+            "choose_points": "random",
+            "choose_curr_hist": "random",
+            "select_best_point": "random",
+            "model": {
+                "type": "dnn",
+                "path": "data/models/metamodel.h5"
+            }
+        },
+        "trainer": {
+            "type": null
+        },
+        "evaluator": {
+            "type": null
+        },
+        "visualizer": {
+            "type": null
+        }
+    }
+}
