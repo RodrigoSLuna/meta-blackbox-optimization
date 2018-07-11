@@ -1,24 +1,44 @@
 import json
 
-from classes.models import Metamodel
-from classes.optimizers import Random_Search_Optimizer
+import classes.coco_functions as coco_f
 
-#Define FUNCTION
-f = bn.F1(1)
-f.domain = [-5, 5]
-f.dimension = 2
+from classes.experiments import *
 
 
-with open('data/configuration.json', 'r') as f:
+with open("data/configuration.json", 'r') as f:
     configuration = json.load(f)
 
+experiment_type = configuration["experiment"]["type"]
 
-#Carrega tudo o que é necessário:
-representation = Metamodel(configuration)
+if experiment_type == "meta_online_learning":
 
+    runs          = configuration["experiment"]["runs"]
+    test_interval = configuration["experiment"]["test_interval"]
+    
+    if configuration["experiment"]["function"]["type"] == "F1.1":
+        function = coco_f.F1(1)
+        function.domain    = (configuration["experiment"]["function"]["domain"])
+        function.dimension = (configuration["experiment"]["function"]["dimension"])
 
-#Cria um experimento:
-experiment = Experiment(a, b, c, d, ...)
+    if configuration["experiment"]["optimizer"]["type"] == "meta_model":
+        choose_points = configuration["experiment"]["optimizer"]["choose_points"]
+        choose_curr_hist = configuration["experiment"]["optimizer"]["choose_curr_hist"]
+        select_best_point = configuration["experiment"]["optimizer"]["select_best_point"]
+        optimizer = None
 
-#roda:
+        if configuration["experiment"]["optimizer"]["representation"]["type"] == "dnn":
+            path = configuration["experiment"]["optimizer"]["representation"]["path"]
+            representation = None
+
+    if configuration["experiment"]["trainer"]["type"] == None:
+        trainer = None
+
+    if configuration["experiment"]["evaluator"]["type"] == None:
+        evaluator = None
+
+    if configuration["experiment"]["visualizer"]["type"] == None:
+        visualizer = None
+
+    experiment = MetaLearningExperiment(runs, test_interval, function, optimizer, trainer, evaluator, visualizer)
+
 experiment.run()

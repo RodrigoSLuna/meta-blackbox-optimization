@@ -9,12 +9,12 @@
             "domain": [-5, 5]
         },
         "optimizer": {
-            "type": "meta_model",
+            "type": "meta_model_learning",
             "choose_points": "random",
             "choose_curr_hist": "random",
             "select_best_point": "random",
             "representation": {
-                "type": "MetamodelDNN",
+                "type": "dnn",
                 "path": "data/models/metamodel.h5"
             }
         },
