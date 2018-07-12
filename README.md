@@ -109,8 +109,7 @@ Flow diagram:
 
 TODO
 
-
-### Algorithms:
+### Experiments:
 
 Simple Metasearch:
 
@@ -129,3 +128,21 @@ Simple Metasearch:
 5) Evaluate x in f: f(x) = y
 
 6) Update your history
+
+### Reference:
+
+1. http://www.cantab.net/users/yutian.chen/Publications/ChenEtAl_NIPS16Workshop_L2LBlackBoxOptimization.pdf
+2. https://openreview.net/pdf?id=rJXIPK1PM
+3. https://arxiv.org/abs/1805.08594
+
+4. http://www.medal-lab.org/files/2011004_rev1.pdf
+
+5. https://arxiv.org/abs/1604.00772
+6. https://www.lri.fr/~hansen/cmaesintro.html
+
+7. http://coco.gforge.inria.fr/
+
+8. https://ieeexplore.ieee.org/document/7352306/
+9. https://arxiv.org/pdf/1206.2944.pdf
+
+10. http://proceedings.mlr.press/v80/ryder18a.html

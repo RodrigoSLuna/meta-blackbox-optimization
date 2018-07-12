@@ -1,6 +1,6 @@
 {
     "experiment": {
-        "type": "random",
+        "type": "CEU",
         "runs": 1,
         "test_interval": 0,
         "max_evaluations": 10,
@@ -11,6 +11,9 @@
         },
         "optimizer": {
             "type": "random"
+        },
+        "trainer": {
+            "type": null
         },
         "evaluator": {
             "type": null

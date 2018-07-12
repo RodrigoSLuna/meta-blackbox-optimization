@@ -1,6 +1,6 @@
 {
     "experiment": {
-        "type": "meta_online_learning",
+        "type": "CEU",
         "runs": 1,
         "test_interval": 0,
         "max_evaluations": 10,
@@ -11,11 +11,12 @@
         },
         "optimizer": {
             "type": "meta_model",
-            "choose_points": "random",
-            "choose_curr_hist": "random",
-            "select_best_point": "random",
+            "points_strategy": "random",
+            "nb_points": 10,
+            "hist_strategy": "random",
+            "best_point_strategy": "random",
             "representation": {
-                "type": "MetamodelDNN",
+                "type": "dnn",
                 "path": "data/models/metamodel.h5"
             }
         },
