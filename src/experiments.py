@@ -43,13 +43,13 @@ class CEU(Experiment):
         for i in range(self.max_evaluations):
 
             #CHOOSE POINT:
-            new_x = self.optimizer.next_point(self.function.dimension, self.function.domain)
+            new_x = self.optimizer.next_point(self.function.dimension, self.function.domain, self.steps)
             
             #EVALUATE IN F(X):
             new_y = self.function(new_x)
 
             #UPDATE STEPS:
-            self.steps.append([new_x, new_y])
+            self.steps.append([*new_x, new_y])
 
             #STOP CONDITION:
             if self.stop_condition(new_y):
@@ -59,8 +59,8 @@ class CEU(Experiment):
 
     def stop_condition(self, new_y):
         if new_y < self.best_y: 
-            self.best_x, self.best_y = self.steps[-1]
-            #self.best_x = new_x
+            self.best_x = self.steps[-1][:-1]
+            self.best_y = self.steps[-1][-1]
         pass
 
     def reset(self):

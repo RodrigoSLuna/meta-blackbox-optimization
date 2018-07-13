@@ -1,23 +1,25 @@
 {
     "experiment": {
-        "type": "CEU",
-        "runs": 1,
-        "test_interval": 0,
-        "max_evaluations": 10,
+        "type"            : "CEU",
+        "runs"            : 1,
+        "test_interval"   : 0,
+        "max_evaluations" : 10,
         "function": {
-            "type": "F1.1",
-            "dimension": 2,
-            "domain": [-5, 5]
+            "type"      : "F1.1",
+            "dimension" : 2,
+            "domain"    : [-5, 5]
         },
         "optimizer": {
-            "type": "meta_model",
-            "points_strategy": "random",
-            "nb_points": 10,
-            "hist_strategy": "random",
-            "best_point_strategy": "random",
-            "representation": {
+            "type"                : "meta_model",
+            "points_strategy"     : "random",
+            "nb_points"           : 10,
+            "hist_strategy"       : "random",
+            "hist_init"           : "random",
+            "size_hf"             : 5,
+            "best_point_strategy" : "random",
+            "representation"      : {
                 "type": "dnn",
-                "path": "data/models/metamodel.h5"
+                "path": "data/dnn/metamodel.h5"
             }
         },
         "trainer": {

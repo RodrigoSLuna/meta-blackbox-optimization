@@ -1,10 +1,8 @@
-
-
 from keras.models import load_model
-#import numpy as np
+import numpy as np
 
 from abc import ABC, abstractmethod
-class Model(ABC):
+class Representation(ABC):
 
     def __init__(self, configuration):
         self.configuration = configuration
@@ -17,11 +15,12 @@ class Model(ABC):
     def predict(self):
         pass
 
-class Metamodel(Model):
+class DeepNeuralNetwork(Representation):
 
-    def __init__(self, configuration):
-        super().__init__(configuration)
-        self.model = load_model(configuration['dnn']['path'])
+    def __init__(self, path):
+        #super().__init__(configuration)
+        self.path = path
+        self.model = load_model(self.path)
 
     def fit(self, d):
         
@@ -32,11 +31,11 @@ class Metamodel(Model):
         gen = fit_gen(points, Hf, y_net)
         self.model.fit_generator(gen, steps_per_epoch=1, nb_epoch=32,verbose=0)
 
-    def predict(self, points, curr_hf):
+    def predict(self, points, history):
         
-        curr_hf = curr_hf.flatten()
-        curr_hf = np.tile(curr_hf, (len(points), 1))
-        x_test = np.hstack((points, curr_hf))*20
+        history = history.flatten()
+        history = np.tile(history, (len(points), 1))
+        x_test = np.hstack((points, history))*20
         score = self.model.predict(x_test)
         return score
 

@@ -1,11 +1,10 @@
 import numpy as np
-from tqdm import tqdm
 
 from abc import ABC, abstractmethod
 class Optimizer(ABC):
 
-    def __init__(self, configuration):
-        self.configuration = configuration
+    def __init__(self):
+        pass
 
     @abstractmethod
     def next_point(self, dimension, domain):
@@ -20,7 +19,7 @@ class RandomSearchOptimizer(Optimizer):
     def __init__(self):
         pass
 
-    def next_point(self, dimension, domain):
+    def next_point(self, dimension, domain, hf):
         new_x = (domain[1] - domain[0]) * np.random.random_sample(dimension) + domain[0]
         return new_x
 
@@ -29,48 +28,56 @@ class RandomSearchOptimizer(Optimizer):
 
 class MetamodelOptimizer(Optimizer):
 
-    def __init__(self, representation, points_strategy, nb_points, hist_strategy, best_point_strategy, ):
+    def __init__(self, representation, points_strategy, nb_points, hist_strategy, hist_init, size_hf, best_point_strategy):
         self.representation = representation
         self.points_strategy = points_strategy
         self.nb_points = nb_points
         self.hist_strategy = hist_strategy
+        self.hist_init = hist_init
+        self.size_hf = size_hf
         self.best_point_strategy = best_point_strategy
 
-            
-#             #1) Select n random points to be evaluated by meta-model
-#             meta_points = (f.domain[1] - f.domain[0]) * np.random.random_sample((self.nb_samples, f.dimension)) + f.domain[0]
-            
-#             #2) Meta-evaluate points in meta-model
-#             meta_evaluations = self.meta_model.predict(meta_points, curr_hf)
-            
-#             #3) Get the next point (x_t+1)
-#             new_x = self.best_meta_point(meta_points, meta_evaluations, hf)
+    def next_point(self, dimension, domain, hf):
 
-#             #4) Evaluate this point in function
-#             new_y = f(new_x)/1000
-
-
-    def next_point(self, dimension, domain):
-
-        #1) Select n random points to be evaluated by meta-model
-        meta_points = self.select_points(dimension, domain)
-        meta_points = 
+        #1) CHOOSE METAPOINTS AND CURR_HIST
+        selected_points  = self.select_points(dimension, domain)
+        selected_history = self.select_history(hf)
 
         #2) Meta-evaluate points in meta-model
-        meta_evaluations = self.representation.predict(meta_points, curr_hf)
+        evaluations = self.representation.predict(selected_points, selected_history)
 
         #3) Get the next point (x_t+1)
-        new_x = self.best_meta_point(meta_points, meta_evaluations, hf)
+        new_x = self.best_meta_point(selected_points, evaluations)
 
         return new_x
 
     def reset(self):
         pass   
 
-    def select_points(dimension, domain):
-        if self.
-        (domain[1] - domain[0]) * np.random.random_sample((self.nb_points, dimension)) + domain[0]
-        pass 
+    def select_points(self, dimension, domain):
+        if self.points_strategy == "random":
+            return (domain[1] - domain[0]) * np.random.random_sample((self.nb_points, dimension)) + domain[0] 
+
+    def select_history(self, hf):
+        #Init:
+        if hf == []:
+            return self.init_history()
+        else:
+            if self.hist_strategy == "random":
+                hf = np.array(hf)
+                idx = np.random.choice(len(hf), self.size_hf)
+                return hf[idx]
+
+    def init_history(self):
+        if self.hist_init == "random":
+            return np.array([(0,0,0)]*self.size_hf)
+
+
+    def best_meta_point(self, selected_points, evaluations):
+        if self.best_point_strategy == "random":
+            index = np.random.randint(0, len(selected_points))
+            return selected_points[index]
+
 
 # class Meta_Random_Search_Optimizer(Optimizer):
 
