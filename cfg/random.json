@@ -3,9 +3,9 @@
         "type"            : "CEU",
         "runs"            : 1,
         "test_interval"   : 0,
-        "max_evaluations" : 10,
+        "max_evaluations" : 50,
         "function": {
-            "type"      : ["F1.1", "F2.1"],
+            "type"      : ["F1.0", "F1.1", "F1.2", "F1.3", "F1.4"],
             "dimension" : 2,
             "domain"    : [-5, 5]
         },
@@ -16,7 +16,8 @@
             "type": null
         },
         "evaluator": {
-            "type": null
+            "type": "step_evaluator",
+            "file_path": "data/steps/output"
         },
         "visualizer": {
             "type": null

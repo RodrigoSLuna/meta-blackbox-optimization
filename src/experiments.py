@@ -53,11 +53,11 @@ class CEU(Experiment):
                     pass
 
                 #Evaluator:
-                try:
-                    y_values = self.steps[:, -1]
-                    self.evaluator.write(self.curr_function.f.fopt, y_values)
-                except:
-                    pass
+                print("aaaa")
+                y_values = self.steps[:, -1]
+                self.evaluator.write(self.curr_function.f.fopt, y_values)
+                #except:
+                #    pass
 
                 print("END")
 
@@ -82,6 +82,9 @@ class CEU(Experiment):
             #STOP CONDITION:
             if self.stop_condition(new_x, new_y):
                 return i
+
+        self.steps = np.array(self.steps)
+        self.info = np.array(self.info)
 
         return self.max_evaluations
 

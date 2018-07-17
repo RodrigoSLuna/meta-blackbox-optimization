@@ -14,10 +14,10 @@ class StepEvaluator(Evaluator):
 
     def __init__(self, file_path):
         self.file_path = file_path
+        self.file_id = 0
     
     def write(self, max_value, y_values):
-
-        self.file = open(self.file_path, "w")
+        self.file = open(self.file_path + "-" + str(self.file_id), "w")
 
         string = "max_value: " + str(max_value) + "\n"
         string += "step y_value\n"
@@ -25,9 +25,8 @@ class StepEvaluator(Evaluator):
         for i, y in enumerate(y_values):
           string += str(i) + " " + str(y) + "\n"
 
-
         self.file.write(string)
-        
+        self.file_id += 1        
         
 
 # from tqdm import tqdm
