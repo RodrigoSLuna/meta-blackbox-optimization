@@ -1,4 +1,12 @@
-<img src="https://latex.codecogs.com/gif.latex?\frac{2}{3}" title="\frac{2}{3}" />
+```python
+from typing import Iterator
+
+def fib(n: int) -> Iterator[int]:
+    a, b = 0, 1
+    while a < n:
+        yield a
+        a, b = b, a + b
+```
 
 # Generic Learning to Optimize Library
 
@@ -11,7 +19,9 @@ GLOL is a Python library that aims to easily allow evaluating different algorith
 # Setup
 ...
 # Running
-...
+
+
+
 # Visualization
 ...
 # Further reading  
