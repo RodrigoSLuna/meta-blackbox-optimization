@@ -2,7 +2,7 @@
 
 ![Alt text](doc/GLOL_blackbox_optimizer.png?raw=true "BlackBox Optimizer")
 
-GLOL is a Python library that aims to easily allow evaluating different algorithms through a declarative configuration interface.
+    GLOL is a Python library that aims to easily allow evaluating different algorithms through a declarative configuration interface.
 
 # Installation and Setup
 ...
