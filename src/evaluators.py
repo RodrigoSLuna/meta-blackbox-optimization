@@ -17,9 +17,10 @@ class StepEvaluator(Evaluator):
         self.file_id = 0
     
     def write(self, max_value, y_values):
+        #print("WRITING")
         self.file = open(self.file_path + "-" + str(self.file_id), "w")
 
-        string = "max_value: " + str(max_value) + "\n"
+        string = "min_value: " + str(max_value) + "\n"
         string += "step y_value\n"
 
         for i, y in enumerate(y_values):

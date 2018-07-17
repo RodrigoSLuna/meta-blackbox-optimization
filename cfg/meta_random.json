@@ -10,14 +10,24 @@
             "domain"    : [-5, 5]
         },
         "optimizer": {
-            "type": "random"
+            "type"                : "meta_model",
+            "points_strategy"     : "random",
+            "nb_points"           : 10,
+            "hist_strategy"       : "random",
+            "hist_init"           : "zero",
+            "size_hf"             : 5,
+            "best_point_strategy" : "random",
+            "representation"      : {
+                "type": "dnn",
+                "path": "data/dnn/metamodel.h5"
+            }
         },
         "trainer": {
             "type": null
         },
         "evaluator": {
             "type": "step_evaluator",
-            "file_path": "data/output/random"
+            "file_path": "data/output/meta_random"
         },
         "visualizer": {
             "type": null

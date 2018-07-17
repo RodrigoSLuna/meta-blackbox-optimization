@@ -19,13 +19,26 @@ def create_experiment(configuration):
 
         #Function:
         lst_functions = configuration["experiment"]["function"]["type"]
-        lst_functions = [item.split(".") for item in lst_functions]
-        functions = []
-        for f, instance in lst_functions:
+        functions_0 = lst_functions[0]
+        functions_1 = lst_functions[1]
+
+        functions_0 = [item.split(".") for item in functions_0]
+        train_functions = []
+        for f, instance in functions_0:
             domain    = configuration["experiment"]["function"]["domain"]
             dimension = configuration["experiment"]["function"]["dimension"]
             function = Function(f, instance, domain, dimension)
-            functions.append(function)
+            train_functions.append(function)
+        
+        functions_1 = [item.split(".") for item in functions_1]
+        test_functions = []
+        for f, instance in functions_1:
+            domain    = configuration["experiment"]["function"]["domain"]
+            dimension = configuration["experiment"]["function"]["dimension"]
+            function = Function(f, instance, domain, dimension)
+            test_functions.append(function)
+
+        functions = [train_functions, test_functions]
 
         #Optimizer:
         if configuration["experiment"]["optimizer"]["type"] == "meta_model":
@@ -46,9 +59,11 @@ def create_experiment(configuration):
         if configuration["experiment"]["trainer"]["type"] == None:
             trainer = None
         elif configuration["experiment"]["trainer"]["type"] == "episodic_dnn":
-            dnn_path  = configuration["experiment"]["trainer"]["dnn_path"]
-            data_path = configuration["experiment"]["trainer"]["data_path"]
-            trainer = DNNTrainer(dnn_path, data_path)
+            dnn_path   = configuration["experiment"]["trainer"]["dnn_path"]
+            data_path  = configuration["experiment"]["trainer"]["data_path"]
+            batch_size = configuration["experiment"]["trainer"]["batch_size"]
+            epochs     = configuration["experiment"]["trainer"]["epochs"]
+            trainer = DNNTrainer(dnn_path, data_path, batch_size, epochs)
 
         #Evaluator:
         if configuration["experiment"]["evaluator"]["type"] == None:

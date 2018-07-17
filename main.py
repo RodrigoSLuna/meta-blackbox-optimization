@@ -12,7 +12,7 @@ except:
     print("Insert a valid cfg_path!")
     exit()
 
-with open("cfg/" + cfg_path, 'r') as f:
+with open(cfg_path, 'r') as f:
     configuration = json.load(f)
 
 experiment = create_experiment(configuration)

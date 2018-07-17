@@ -16,14 +16,15 @@ class Trainer(ABC):
     def fit(self):
         pass
 
-
-
 class DNNTrainer(Trainer):
 
-    def __init__(self, dnn_path, data_path):
+    def __init__(self, dnn_path, data_path, batch_size, epochs):
         #super().__init__(configuration)
         self.dnn_path = dnn_path
         self.data_path = data_path
+        self.batch_size = batch_size
+        self.epochs = epochs
+
         self.model = None
 
     def reset(self):
@@ -40,7 +41,7 @@ class DNNTrainer(Trainer):
         self.y = data[:, -1]
 
         #Fit:
-        self.model.fit(self.x, self.y, steps_per_epoch=1, epochs=32, verbose=0)
+        self.model.fit(self.x, self.y, batch_size=self.batch_size, epochs=self.epochs)
         
         #Save:
         self.model.save(self.dnn_path)

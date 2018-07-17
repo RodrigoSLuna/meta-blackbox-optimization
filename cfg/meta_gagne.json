@@ -3,9 +3,9 @@
         "type"            : "CEU",
         "runs"            : 1,
         "test_interval"   : 0,
-        "max_evaluations" : 10,
+        "max_evaluations" : 50,
         "function": {
-            "type"      : ["F1.1"],
+            "type"      : [["F1.0", "F1.1", "F1.2"], ["F1.3", "F1.4"]],
             "dimension" : 2,
             "domain"    : [-5, 5]
         },
@@ -13,10 +13,10 @@
             "type"                : "meta_model",
             "points_strategy"     : "random",
             "nb_points"           : 10,
-            "hist_strategy"       : "random",
-            "hist_init"           : "random",
+            "hist_strategy"       : "gagne",
+            "hist_init"           : "zero",
             "size_hf"             : 5,
-            "best_point_strategy" : "random",
+            "best_point_strategy" : "lowest",
             "representation"      : {
                 "type": "dnn",
                 "path": "data/dnn/metamodel.h5"
@@ -26,7 +26,8 @@
             "type": null
         },
         "evaluator": {
-            "type": null
+            "type": "step_evaluator",
+            "file_path": "data/output/meta_gagne"
         },
         "visualizer": {
             "type": null

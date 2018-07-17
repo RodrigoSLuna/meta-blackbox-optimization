@@ -19,7 +19,9 @@ class CEU(Experiment):
         self.test_interval   = test_interval
         self.max_evaluations = max_evaluations
 
-        self.functions       = functions
+        self.train_functions = functions[0] 
+        self.test_functions  = functions[1]
+
         self.optimizer       = optimizer
         self.trainer         = trainer
         self.evaluator       = evaluator
@@ -30,20 +32,17 @@ class CEU(Experiment):
     
     def run(self):
 
-        for function in self.functions:
-
+        print("\nTRAIN\n")
+        #Train part:
+        for function in self.train_functions:
             self.curr_function = function
             
             #RESET
             self.reset()
-
+            
             for i in range(self.runs):
-
-                print("function: " + "-" + ", run:" + str(i))
+                
                 evaluations = self._run()
-                print("evaluations: " + str(evaluations))
-                print("best y: " + str(self.best_y))
-                print("best x: " + str(self.best_x))
 
                 #Trainer:
                 try:
@@ -52,17 +51,40 @@ class CEU(Experiment):
                 except:
                     pass
 
+                #Print:
+                print("START")
+                print("function: " + "-" + ", run:" + str(i))
+                print("evaluations: " + str(evaluations))
+                print("best y: " + str(self.best_y))
+                print("best x: " + str(self.best_x))
+                print("END\n")
+        
+        print("TEST\n")
+        #Test part:
+        for function in self.test_functions:
+            self.curr_function = function
+
+            #RESET
+            self.reset()
+
+            for i in range(self.runs):
+
+                evaluations = self._run()
+
                 #Evaluator:
-                print("aaaa")
-                y_values = self.steps[:, -1]
-                self.evaluator.write(self.curr_function.f.fopt, y_values)
-                #except:
-                #    pass
+                try:
+                    y_values = self.steps[:, -1]
+                    self.evaluator.write(self.curr_function.f.fopt, y_values)
+                except:
+                    pass
 
-                print("END")
-
-                #if self.test_interval > 0 and i % self.test_interval == 1:
-                #   self.test()
+                #Print:
+                print("START")
+                print("function: " + "-" + ", run:" + str(i))
+                print("evaluations: " + str(evaluations))
+                print("best y: " + str(self.best_y))
+                print("best x: " + str(self.best_x))
+                print("END\n")                
 
     def _run(self):
 
@@ -107,7 +129,7 @@ class CEU(Experiment):
         data = np.concatenate((self.steps, self.info), axis=1)
 
         #Save:
-        np.save(self.data_path, data)
+        np.save(self.trainer.data_path, data)
 
 
     def reset(self):

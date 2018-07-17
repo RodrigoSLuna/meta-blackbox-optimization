@@ -59,19 +59,41 @@ class MetamodelOptimizer(Optimizer):
         if hf == []:
             return self.init_history()
         else:
+            hf = np.array(hf)
+
             if self.hist_strategy == "random":
-                hf = np.array(hf)
                 idx = np.random.choice(len(hf), self.size_hf)
                 return hf[idx]
+            elif self.hist_strategy == "gagne":
+
+                if len(hf) < self.size_hf:
+                    idx = np.random.choice(len(hf), self.size_hf)
+                    return hf[idx]
+                else:
+
+                    #50% top:
+                    ind_half_lowest = (-hf[:, 2]).argsort()[len(hf)-self.size_hf//2 - 1:]
+
+                    #50% random:
+                    ind_half_random = [np.random.randint(0, len(hf)-1) for i in range(self.size_hf//2)]
+
+                    #Concatenate:
+                    all_indexes = sorted(np.concatenate((ind_half_lowest, ind_half_random)))
+                    
+                    return hf[all_indexes]
+
 
     def init_history(self):
-        if self.hist_init == "random":
+        if self.hist_init == "zero":
             return np.array([(0,0,0)]*self.size_hf)
 
 
     def best_meta_point(self, selected_points, evaluations):
         if self.best_point_strategy == "random":
             index = np.random.randint(0, len(selected_points))
+            return selected_points[index]
+        elif self.best_point_strategy == "lowest":
+            index = np.argmin(evaluations)
             return selected_points[index]
 
 
