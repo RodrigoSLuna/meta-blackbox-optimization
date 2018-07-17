@@ -10,13 +10,13 @@
 
 ## Running:
     
-    ```
-    python3 main.py random.json
-    ```
+```
+python3 main.py random.json
+```
 
 ## Configuration file (json):
 
- - More information in [cfg_readme.md](https://github.com/Hugodovs/meta-blackbox-optimization/blob/master/doc/cfg_readme.md)
+More information in [cfg_readme.md](https://github.com/Hugodovs/meta-blackbox-optimization/blob/master/doc/cfg_readme.md)
 
 ## Further reading:
 
