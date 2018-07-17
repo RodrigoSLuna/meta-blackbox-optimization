@@ -90,35 +90,23 @@ More information in [cfg_readme.md](https://github.com/Hugodovs/meta-blackbox-op
 
 ### Related Work:
 
+[Learning to learn for global optimization of black box functions](http://www.cantab.net/users/yutian.chen/Publications/ChenEtAl_NIPS16Workshop_L2LBlackBoxOptimization.pdf)
 
-Learning to learn for global optimization of black box functions
-http://www.cantab.net/users/yutian.chen/Publications/ChenEtAl_NIPS16Workshop_L2LBlackBoxOptimization.pdf
+[Easing non-convex optimization with neural networks](https://openreview.net/pdf?id=rJXIPK1PM)
 
-Easing non-convex optimization with neural networks
-https://openreview.net/pdf?id=rJXIPK1PM
+[Neural Generative Models for Global Optimization with Gradients](https://arxiv.org/abs/1805.08594)
 
-Neural Generative Models for Global Optimization with Gradients
-https://arxiv.org/abs/1805.08594
+[An Introduction and Survey of Estimation of Distribution Algorithms](http://www.medal-lab.org/files/2011004_rev1.pdf)
 
-An Introduction and Survey of Estimation of Distribution Algorithms
-http://www.medal-lab.org/files/2011004_rev1.pdf
+[The CMA Evolution Strategy: A Tutorial](https://arxiv.org/abs/1604.00772)
 
+[COCO (COmparing Continuous Optimisers)](http://coco.gforge.inria.fr/)
 
-The CMA Evolution Strategy: A Tutorial
-https://arxiv.org/abs/1604.00772
+[Taking the Human Out of the Loop: A Review of Bayesian Optimization](https://ieeexplore.ieee.org/document/7352306/)
 
-COCO (COmparing Continuous Optimisers)
-http://coco.gforge.inria.fr/
+[Pratical Bayesian Optimization of Machine Learning Algorithms](https://arxiv.org/pdf/1206.2944.pdf)
 
-Taking the Human Out of the Loop: A Review of Bayesian Optimization
-https://ieeexplore.ieee.org/document/7352306/
+[Black-Box Variational Inference for Stochastic Differential Equations](http://proceedings.mlr.press/v80/ryder18a.html)
 
-Pratical Bayesian Optimization of Machine Learning Algorithms
-https://arxiv.org/pdf/1206.2944.pdf
-
-Black-Box Variational Inference for Stochastic Differential Equations
-http://proceedings.mlr.press/v80/ryder18a.html
-
-Guided evolutionary strategies: escaping the curse of dimensionality in random search
-https://arxiv.org/abs/1806.10230
+[Guided evolutionary strategies: escaping the curse of dimensionality in random search](https://arxiv.org/abs/1806.10230)
 
