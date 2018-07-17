@@ -1,3 +1,5 @@
+import numpy as np
+
 from abc import ABC, abstractmethod
 class Experiment(ABC):
   
@@ -12,61 +14,105 @@ class CEU(Experiment):
     '''choose -> evaluate -> update'''
 
 
-    def __init__(self, runs, test_interval, max_evaluations, function, optimizer, trainer, evaluator, visualizer):
+    def __init__(self, runs, test_interval, max_evaluations, functions, optimizer, trainer, evaluator, visualizer):
         self.runs            = runs
         self.test_interval   = test_interval
         self.max_evaluations = max_evaluations
-        self.function        = function
+
+        self.functions       = functions
         self.optimizer       = optimizer
         self.trainer         = trainer
         self.evaluator       = evaluator
         self.visualizer      = visualizer
 
-        self.steps = []
-
         #self.meta_points = []  self or not?
         #self.curr_hf = []      self or not?
     
     def run(self):
-        for i in range(self.runs):
+
+        for function in self.functions:
+
+            self.curr_function = function
+            
+            #RESET
             self.reset()
-            self.optimizer.reset()
 
-            self._run()
+            for i in range(self.runs):
 
-            #if self.test_interval > 0 and i % self.test_interval == 1:
-            #   self.test()
+                print("function: " + "-" + ", run:" + str(i))
+                evaluations = self._run()
+                print("evaluations: " + str(evaluations))
+                print("best y: " + str(self.best_y))
+                print("best x: " + str(self.best_x))
+
+                #Trainer:
+                try:
+                    self.save_data()
+                    self.trainer.fit()
+                except:
+                    pass
+
+                #Evaluator:
+                try:
+                    y_values = self.steps[:, -1]
+                    self.evaluator.write(self.curr_function.f.fopt, y_values)
+                except:
+                    pass
+
+                print("END")
+
+                #if self.test_interval > 0 and i % self.test_interval == 1:
+                #   self.test()
 
     def _run(self):
-        print("running")
 
         for i in range(self.max_evaluations):
 
             #CHOOSE POINT:
-            new_x = self.optimizer.next_point(self.function.dimension, self.function.domain, self.steps)
-            
-            #EVALUATE IN F(X):
-            new_y = self.function(new_x)
+            new_x, hf = self.optimizer.next_point(self.curr_function.dimension, self.steps)
+            new_x = self.curr_function.denormalize_x(new_x)
 
-            #UPDATE STEPS:
+            #EVALUATE IN F(X):
+            new_y = self.curr_function(new_x)
+
+            #UPDATE STEP:
             self.steps.append([*new_x, new_y])
+            self.info.append(hf)
 
             #STOP CONDITION:
-            if self.stop_condition(new_y):
-                break
+            if self.stop_condition(new_x, new_y):
+                return i
 
-        print(self.best_x, self.best_y)
+        return self.max_evaluations
 
-    def stop_condition(self, new_y):
+    def stop_condition(self, new_x, new_y):
         if new_y < self.best_y: 
-            self.best_x = self.steps[-1][:-1]
-            self.best_y = self.steps[-1][-1]
-        pass
+            self.best_x = new_x
+            self.best_y = new_y
+
+    def save_data(self):
+        
+        #Info:
+        self.info = np.array(self.info)
+        info_shape = self.info.shape
+        self.info = self.info.reshape((info_shape[0], info_shape[1]*info_shape[2]))
+                       
+        #Steps:
+        self.steps = np.array(self.steps)
+
+        #Concatenate:
+        data = np.concatenate((self.steps, self.info), axis=1)
+
+        #Save:
+        np.save(self.data_path, data)
+
 
     def reset(self):
-        self.best_x = [None] * self.function.dimension 
-        self.best_y = 99999.0
-        pass
+        self.steps = []
+        self.info  = []
+
+        self.best_x = [None] * self.curr_function.dimension 
+        self.best_y = 9999999.0
 
     def test(self):
         print("testing")

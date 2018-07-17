@@ -23,10 +23,13 @@
             }
         },
         "trainer": {
-            "type": null
+            "type": "episodic_dnn",
+            "dnn_path": "data/dnn/metamodel.h5",
+            "data_path": "data/dataset/steps.npy"
         },
         "evaluator": {
-            "type": null
+            "type": "step_evaluator",
+            "file_path": "output.txt"
         },
         "visualizer": {
             "type": null

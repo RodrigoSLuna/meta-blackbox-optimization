@@ -1,6 +1,6 @@
 # Generic Learning to Optimize Library
 
-![Alt text](documentation/GLOL_blackbox_optimizer.png?raw=true "BlackBox Optimizer")
+![Alt text](doc/GLOL_blackbox_optimizer.png?raw=true "BlackBox Optimizer")
 
 GLOL is a Python library that aims to easily allow evaluating different algorithms through a declarative configuration interface.
 
@@ -16,46 +16,62 @@ GLOL is a Python library that aims to easily allow evaluating different algorith
 
 Flow diagram:
 
-![Alt text](documentation/GLOL_diagram_flow.png?raw=true "Flow diagram of GLOL")
+![Alt text](doc/GLOL_diagram_flow.png?raw=true "Flow diagram of GLOL")
 
 ### Directory Structure:
 
 ```
 .
-├── classes                         //Implementation of main classes
-│   ├── evaluators.py
-│   ├── functions.py
-│   ├── models.py
-│   ├── optimizers.py
-│   ├── trainers.py
-│   └── visualizers.py
+├── cfg
+│   ├── meta.json
+│   └── random.json
 ├── data
-│   ├── configuration.json          -> experiment configuration 
-│   ├── dataset                     -> experiment output (each folder)
-│   │   └── experiment0                 -> experiment name
-│   │       ├── description.txt               -> experiment description
-│   │       └── steps.npy                     -> optimizer output
-│   └── dnn                         -> different keras dnn
-│       ├── generate_dnn.py             -> run to generate nn model
-│       └── metamodel.h5                -> dnn keras model
-├── documentation                   -> more information
+│   ├── dataset
+│   │   └── experiment0
+│   │       ├── description.txt
+│   │       └── steps.npy
+│   └── dnn
+│       ├── generate_dnn.py
+│       └── metamodel.h5
+├── doc
+│   ├── configuration_explained.txt
 │   ├── GLOL_blackbox_optimizer.png
 │   ├── GLOL_diagram_flow.png
 │   ├── GLOL_steps.png
 │   └── simple_example.py
-├── main.py                         -> run an experiment
-├── README.md                       -> README
-├── results                         -> jupyter notebooks with some results
+├── main.py
+├── README.md
+├── results
 │   ├── index.html
 │   └── Results.ipynb
-└── To be Deleted                   -> Future versions will be deleted
-    ├── generate_train_data.py
-    ├── main.py
-    ├── process_data.py
-    └── run_results.py
+├── src
+│   ├── coco_functions.py
+│   ├── evaluators.py
+│   ├── experiments.py
+│   ├── functions.py
+│   ├── optimizers.py
+│   ├── __pycache__
+│   │   ├── coco_functions.cpython-36.pyc
+│   │   ├── experiments.cpython-36.pyc
+│   │   ├── models.cpython-36.pyc
+│   │   ├── optimizers.cpython-36.pyc
+│   │   └── representations.cpython-36.pyc
+│   ├── representations.py
+│   ├── trainers.py
+│   └── visualizers.py
+├── To be Deleted
+│   ├── configuration.json
+│   ├── configuration_test.json
+│   ├── generate_train_data.py
+│   ├── index.html
+│   ├── main.py
+│   ├── process_data.py
+│   ├── run_results.py
+│   └── test.py
+└── verification.py
 ```
 
-8 directories, 23 files
+10 directories, 37 files
 
 ### Class Structure:
 

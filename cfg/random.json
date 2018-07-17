@@ -1,13 +1,13 @@
 {
     "experiment": {
-        "type": "CEU",
-        "runs": 1,
-        "test_interval": 0,
-        "max_evaluations": 10,
+        "type"            : "CEU",
+        "runs"            : 1,
+        "test_interval"   : 0,
+        "max_evaluations" : 10,
         "function": {
-            "type": "F1.1",
-            "dimension": 2,
-            "domain": [-5, 5]
+            "type"      : ["F1.1", "F2.1"],
+            "dimension" : 2,
+            "domain"    : [-5, 5]
         },
         "optimizer": {
             "type": "random"

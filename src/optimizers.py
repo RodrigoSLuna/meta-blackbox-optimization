@@ -10,21 +10,16 @@ class Optimizer(ABC):
     def next_point(self, dimension, domain):
         pass
 
-    @abstractmethod
-    def reset(self):
-        pass
-
 class RandomSearchOptimizer(Optimizer):
 
     def __init__(self):
         pass
 
-    def next_point(self, dimension, domain, hf):
+    def next_point(self, dimension, hf):
+        domain = [-1, 1]    #hard code?
+        
         new_x = (domain[1] - domain[0]) * np.random.random_sample(dimension) + domain[0]
-        return new_x
-
-    def reset(self):
-        pass
+        return new_x, []
 
 class MetamodelOptimizer(Optimizer):
 
@@ -37,10 +32,10 @@ class MetamodelOptimizer(Optimizer):
         self.size_hf = size_hf
         self.best_point_strategy = best_point_strategy
 
-    def next_point(self, dimension, domain, hf):
+    def next_point(self, dimension, hf):
 
         #1) CHOOSE METAPOINTS AND CURR_HIST
-        selected_points  = self.select_points(dimension, domain)
+        selected_points  = self.select_points(dimension)
         selected_history = self.select_history(hf)
 
         #2) Meta-evaluate points in meta-model
@@ -49,12 +44,13 @@ class MetamodelOptimizer(Optimizer):
         #3) Get the next point (x_t+1)
         new_x = self.best_meta_point(selected_points, evaluations)
 
-        return new_x
+        return new_x, selected_history
 
-    def reset(self):
-        pass   
+  
 
-    def select_points(self, dimension, domain):
+    def select_points(self, dimension):
+        domain = [-1, 1]    #hard code?
+
         if self.points_strategy == "random":
             return (domain[1] - domain[0]) * np.random.random_sample((self.nb_points, dimension)) + domain[0] 
 
@@ -78,26 +74,6 @@ class MetamodelOptimizer(Optimizer):
             index = np.random.randint(0, len(selected_points))
             return selected_points[index]
 
-
-# class Meta_Random_Search_Optimizer(Optimizer):
-
-#     def __init__(self):
-#         pass
-
-#     def meta_points(self):
-#         pass
-
-#     def hf(self):
-#         pass
-
-#     def predictions(self, meta_points, curr_hf):
-#         pass
-
-#     def best_point(self, meta_points, meta_evaluations):
-#         pass
-
-#     def update(self, info):
-#         pass
 
 # class R2andom_Search_Optimizer(Optimizer):
     
