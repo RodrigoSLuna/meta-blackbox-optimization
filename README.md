@@ -4,19 +4,23 @@
 
     GLOL is a Python library that aims to easily allow evaluating different algorithms through a declarative configuration interface.
 
-# Installation and Setup
-...
+## Installation and Setup (Ubuntu 18.04 LTS):
 
-# Running
+    ...
 
-```
-python3 main.py random.json
-```
+## Running:
+    
+    ```
+    python3 main.py random.json
+    ```
 
-# Further reading  
+## Configuration file (json):
 
-##### Configuration file:
-More information in [cfg_readme.md](https://github.com/Hugodovs/meta-blackbox-optimization/blob/master/doc/cfg_readme.md)
+ - More information in [cfg_readme.md](https://github.com/Hugodovs/meta-blackbox-optimization/blob/master/doc/cfg_readme.md)
+
+## Further reading:
+
+####
 
 ##### Flow diagram:
 ![Alt text](doc/GLOL_diagram_flow.png?raw=true "Flow diagram of GLOL")
