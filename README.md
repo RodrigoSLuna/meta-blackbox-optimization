@@ -1,3 +1,5 @@
+<img src="https://latex.codecogs.com/gif.latex?\frac{2}{3}" title="\frac{2}{3}" />
+
 # Generic Learning to Optimize Library
 
 ![Alt text](doc/GLOL_blackbox_optimizer.png?raw=true "BlackBox Optimizer")
