@@ -88,20 +88,37 @@ More information in [cfg_readme.md](https://github.com/Hugodovs/meta-blackbox-op
 5) Evaluate <img src="https://latex.codecogs.com/gif.latex?\vec{x}" title="\vec{x}" /> in function
 6) Update your history
 
-### Reference:
+### Related Work:
 
-1. http://www.cantab.net/users/yutian.chen/Publications/ChenEtAl_NIPS16Workshop_L2LBlackBoxOptimization.pdf
-2. https://openreview.net/pdf?id=rJXIPK1PM
-3. https://arxiv.org/abs/1805.08594
 
-4. http://www.medal-lab.org/files/2011004_rev1.pdf
+Learning to learn for global optimization of black box functions
+http://www.cantab.net/users/yutian.chen/Publications/ChenEtAl_NIPS16Workshop_L2LBlackBoxOptimization.pdf
 
-5. https://arxiv.org/abs/1604.00772
-6. https://www.lri.fr/~hansen/cmaesintro.html
+Easing non-convex optimization with neural networks
+https://openreview.net/pdf?id=rJXIPK1PM
 
-7. http://coco.gforge.inria.fr/
+Neural Generative Models for Global Optimization with Gradients
+https://arxiv.org/abs/1805.08594
 
-8. https://ieeexplore.ieee.org/document/7352306/
-9. https://arxiv.org/pdf/1206.2944.pdf
+An Introduction and Survey of Estimation of Distribution Algorithms
+http://www.medal-lab.org/files/2011004_rev1.pdf
 
-10. http://proceedings.mlr.press/v80/ryder18a.html
+
+The CMA Evolution Strategy: A Tutorial
+https://arxiv.org/abs/1604.00772
+
+COCO (COmparing Continuous Optimisers)
+http://coco.gforge.inria.fr/
+
+Taking the Human Out of the Loop: A Review of Bayesian Optimization
+https://ieeexplore.ieee.org/document/7352306/
+
+Pratical Bayesian Optimization of Machine Learning Algorithms
+https://arxiv.org/pdf/1206.2944.pdf
+
+Black-Box Variational Inference for Stochastic Differential Equations
+http://proceedings.mlr.press/v80/ryder18a.html
+
+Guided evolutionary strategies: escaping the curse of dimensionality in random search
+https://arxiv.org/abs/1806.10230
+
