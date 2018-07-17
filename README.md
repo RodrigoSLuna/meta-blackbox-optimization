@@ -16,11 +16,24 @@ python3 main.py random.json
 
 ## Configuration file (json):
 
-More information in [cfg_readme.md](https://github.com/Hugodovs/meta-blackbox-optimization/blob/master/doc/cfg_readme.md)
+- More information in [cfg_readme.md](https://github.com/Hugodovs/meta-blackbox-optimization/blob/master/doc/cfg_readme.md)
 
 ## Further reading:
 
-####
+##### Problem Formulation:
+![Alt text](doc/problem_formulation.png?raw=true "Problem Formulation")
+
+##### Method Pseudocode:
+
+###### Using Metamodel:
+
+1) Choose points
+2) Choose Current History
+3) Evaluate points in Metalmodel:
+![Alt text](doc/meta_model.png?raw=true "Metamodel")
+4) Select Best Point <img src="https://latex.codecogs.com/gif.latex?\vec{x}" title="\vec{x}" /> (lowest value)
+5) Evaluate <img src="https://latex.codecogs.com/gif.latex?\vec{x}" title="\vec{x}" /> in function
+6) Update your history
 
 ##### Flow diagram:
 ![Alt text](doc/GLOL_diagram_flow.png?raw=true "Flow diagram of GLOL")
@@ -78,19 +91,7 @@ More information in [cfg_readme.md](https://github.com/Hugodovs/meta-blackbox-op
 └── verification.py
 ```
 
-10 directories, 37 files
-
-##### Method Pseudocode:
-
-###### Using Metamodel:
-
-1) Choose points
-2) Choose Current History
-3) Evaluate points in Metalmodel:
-![Alt text](doc/meta_model.png?raw=true "Metamodel")
-4) Select Best Point <img src="https://latex.codecogs.com/gif.latex?\vec{x}" title="\vec{x}" /> (lowest value)
-5) Evaluate <img src="https://latex.codecogs.com/gif.latex?\vec{x}" title="\vec{x}" /> in function
-6) Update your history
+ - 10 directories, 37 files
 
 ### Related Work:
 
