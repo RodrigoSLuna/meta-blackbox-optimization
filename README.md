@@ -1,13 +1,3 @@
-```python
-from typing import Iterator
-
-def fib(n: int) -> Iterator[int]:
-    a, b = 0, 1
-    while a < n:
-        yield a
-        a, b = b, a + b
-```
-
 # Generic Learning to Optimize Library
 
 ![Alt text](doc/GLOL_blackbox_optimizer.png?raw=true "BlackBox Optimizer")
@@ -25,11 +15,13 @@ python3 main.py random.json
 
 # Further reading  
 
-Flow diagram:
+##### Configuration file:
+More information in [cfg_readme.md](https://github.com/Hugodovs/meta-blackbox-optimization/blob/master/doc/cfg_readme.md)
 
+##### Flow diagram:
 ![Alt text](doc/GLOL_diagram_flow.png?raw=true "Flow diagram of GLOL")
 
-### Directory Structure:
+##### Directory Structure:
 
 ```
 .
@@ -84,28 +76,16 @@ Flow diagram:
 
 10 directories, 37 files
 
-### Class Structure:
+##### Method Pseudocode:
 
-
-
-### Experiments:
-
-Simple Metasearch:
+###### Using Metamodel:
 
 1) Choose points
-
-2) Choose curr_history
-
-3) Process Metalmodel:
-            ______
-    Xt -----|     |
-            |     |---- M(y)   for all Xt
-    Hf -----|_____|
-
-4) Select Best Point
-
-5) Evaluate x in f: f(x) = y
-
+2) Choose Current History
+3) Evaluate points in Metalmodel:
+![Alt text](doc/meta_model.png?raw=true "Metamodel")
+4) Select Best Point <img src="https://latex.codecogs.com/gif.latex?\vec{x}" title="\vec{x}" /> (lowest value)
+5) Evaluate <img src="https://latex.codecogs.com/gif.latex?\vec{x}" title="\vec{x}" /> in function
 6) Update your history
 
 ### Reference:
