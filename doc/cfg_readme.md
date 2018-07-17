@@ -1,6 +1,20 @@
 # Entities:
 
-    It has some entities. Each entity has one type and configurations.
+> In config file you have entities declarations.
+> Each entity has one type and configurations.
+
+> You have mandatory entities (internals):
+- Experiment
+- Function
+- Optimizer
+
+>  Optional entities (externals):
+
+- Trainer
+- Evaluator
+- Visualizer
+
+## Internals:
 
 ### 1) Experiment: 
         It controls the flow of information
@@ -36,13 +50,17 @@
 | best_point_strategy | "random"   | 	how to choose the choosen point after they were evaluated by the meta-model  |
 
 #### 3.1) Representation:
+        Interface with DNN
         
 | key | value | description |
 | :--- | :--- | :--- |
 | type | "dnn" |   |
 | path | string  |  path of the .h5 file |
 
-### 4) trainer:
+## Externals:
+
+### 1) Trainer:
+        It uses data and model to generate a trained model
 
 | key | value | description |
 | :--- | :--- | :--- |
@@ -50,7 +68,8 @@
 | dnn_path | string  |  path of .h5 file to be trained |
 | data_path | string  |  path of steps.npy file |
 
-### 5) evaluator:
+### 2) Evaluator:
+        It uses steps to generate a output.txt file
 
 | key | value | description |
 | :--- | :--- | :--- |
@@ -58,9 +77,10 @@
 | file_path | string  |  path of file to be written the minimum value and each y |
 | data_path | string  |  path of steps.npy file |
 
-### 6) visualizer:
-        
+### 3) Visualizer:
+        It uses output.txt file to generate a image.png file (plots or steps in the function)
         To be done. Update: visualize.py
+        Current options: "values" or "best_value"
 
 ___
 ### Simple example:
