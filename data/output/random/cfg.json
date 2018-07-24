@@ -1,0 +1,34 @@
+{
+    "experiment": {
+        "type": "CEU",
+        "runs": 200,
+        "test_interval": 0,
+        "max_evaluations": 200,
+        "function": {
+            "type": [
+                [],
+                [
+                    "F1.0"
+                ]
+            ],
+            "dimension": 2,
+            "domain": [
+                -5,
+                5
+            ]
+        },
+        "optimizer": {
+            "type": "random"
+        },
+        "trainer": {
+            "type": null
+        },
+        "evaluator": {
+            "type": "step_evaluator",
+            "root_path": "data/output/random"
+        },
+        "visualizer": {
+            "type": null
+        }
+    }
+}

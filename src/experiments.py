@@ -3,8 +3,8 @@ import numpy as np
 from abc import ABC, abstractmethod
 class Experiment(ABC):
   
-    def __init__(self):
-        pass
+    def __init__(self, configuration):
+        self.configuration = configuration
 
     @abstractmethod
     def run(self):
@@ -14,7 +14,8 @@ class CEU(Experiment):
     '''choose -> evaluate -> update'''
 
 
-    def __init__(self, runs, test_interval, max_evaluations, functions, optimizer, trainer, evaluator, visualizer):
+    def __init__(self, configuration, runs, test_interval, max_evaluations, functions, optimizer, trainer, evaluator, visualizer):
+        super().__init__(configuration)
         self.runs            = runs
         self.test_interval   = test_interval
         self.max_evaluations = max_evaluations
@@ -32,15 +33,18 @@ class CEU(Experiment):
     
     def run(self):
 
-        print("\nTRAIN\n")
+        #Create folder to put results
+        self.evaluator.create_folders(len(self.test_functions), self.configuration)
+
         #Train part:
+        print("\nTRAIN\n")
         for function in self.train_functions:
             self.curr_function = function
             
-            #RESET
-            self.reset()
-            
             for i in range(self.runs):
+                
+                #RESET
+                self.reset()
                 
                 evaluations = self._run()
 
@@ -59,22 +63,22 @@ class CEU(Experiment):
                 print("best x: " + str(self.best_x))
                 print("END\n")
         
-        print("TEST\n")
         #Test part:
-        for function in self.test_functions:
+        print("TEST\n")
+        for function_id, function in enumerate(self.test_functions):
             self.curr_function = function
 
-            #RESET
-            self.reset()
-
             for i in range(self.runs):
+
+                #RESET
+                self.reset()
 
                 evaluations = self._run()
 
                 #Evaluator:
                 try:
                     y_values = self.steps[:, -1]
-                    self.evaluator.write(self.curr_function.f.fopt, y_values)
+                    self.evaluator.write(function_id, i, self.curr_function.f.fopt, y_values)
                 except:
                     pass
 

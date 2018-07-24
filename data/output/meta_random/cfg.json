@@ -1,0 +1,44 @@
+{
+    "experiment": {
+        "type": "CEU",
+        "runs": 200,
+        "test_interval": 0,
+        "max_evaluations": 200,
+        "function": {
+            "type": [
+                [],
+                [
+                    "F1.0"
+                ]
+            ],
+            "dimension": 2,
+            "domain": [
+                -5,
+                5
+            ]
+        },
+        "optimizer": {
+            "type": "meta_model",
+            "points_strategy": "random",
+            "nb_points": 10,
+            "hist_strategy": "random",
+            "hist_init": "zero",
+            "size_hf": 5,
+            "best_point_strategy": "random",
+            "representation": {
+                "type": "dnn",
+                "path": "data/dnn/metamodel.h5"
+            }
+        },
+        "trainer": {
+            "type": null
+        },
+        "evaluator": {
+            "type": "step_evaluator",
+            "root_path": "data/output/meta_random"
+        },
+        "visualizer": {
+            "type": null
+        }
+    }
+}

@@ -18,6 +18,10 @@ python3 main.py random.json
 
 - More information in [cfg_readme.md](https://github.com/Hugodovs/meta-blackbox-optimization/blob/master/doc/cfg_readme.md)
 
+## Visualization and Experiment:
+
+- More information in [info.pdf](https://github.com/Hugodovs/meta-blackbox-optimization/blob/master/doc/info.pdf)
+
 ## Further reading:
 
 ##### Problem Formulation:

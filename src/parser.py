@@ -69,15 +69,15 @@ def create_experiment(configuration):
         if configuration["experiment"]["evaluator"]["type"] == None:
             evaluator = None
         elif configuration["experiment"]["evaluator"]["type"] == "step_evaluator":
-            file_path = configuration["experiment"]["evaluator"]["file_path"]
-            evaluator = StepEvaluator(file_path)
+            root_path = configuration["experiment"]["evaluator"]["root_path"]
+            evaluator = StepEvaluator(root_path)
             
         #Visualizer:
         if configuration["experiment"]["visualizer"]["type"] == None:
             visualizer = None
 
         #Experiment:
-        experiment = CEU(runs, test_interval, max_evaluations, functions, optimizer, trainer, evaluator, visualizer)
+        experiment = CEU(configuration, runs, test_interval, max_evaluations, functions, optimizer, trainer, evaluator, visualizer)
 
         #Return:
         return experiment

@@ -1,4 +1,6 @@
 import numpy as np
+import os
+import json
 
 from abc import ABC, abstractmethod
 class Evaluator(ABC):
@@ -12,22 +14,37 @@ class Evaluator(ABC):
 
 class StepEvaluator(Evaluator):
 
-    def __init__(self, file_path):
-        self.file_path = file_path
-        self.file_id = 0
-    
-    def write(self, max_value, y_values):
+    def __init__(self, root_path):
+        self.root_path = root_path
+
+
+    def create_folders(self, nb_functions, configuration):
+        self.folder_path = self.root_path + "/Function"
+
+        for i in range(nb_functions):
+            try:
+                os.makedirs(self.folder_path + str(i))
+            except:
+                pass
+        with open(self.root_path + "/cfg.json", "w") as f:
+            json.dump(configuration, f, indent=4)
+
+    def write(self, function_id, file_id, min_value, y_values):
         #print("WRITING")
-        self.file = open(self.file_path + "-" + str(self.file_id), "w")
+        self.file = open(self.folder_path + str(function_id) + "/output" + str(file_id) + ".txt", "w")
 
-        string = "min_value: " + str(max_value) + "\n"
-        string += "step y_value\n"
+        string = "min_value\n"
+        string += str(min_value) + "\n"
+        string += "y_values\n"
 
-        for i, y in enumerate(y_values):
-          string += str(i) + " " + str(y) + "\n"
+        for y in y_values:
+          string += str(y) + "\n"
 
-        self.file.write(string)
+        self.file.write(string[:-1]) #remove \n
         self.file_id += 1        
+
+    def dump(self):
+        pass
         
 
 # from tqdm import tqdm

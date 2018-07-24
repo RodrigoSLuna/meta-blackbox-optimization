@@ -1,11 +1,11 @@
 {
     "experiment": {
         "type"            : "CEU",
-        "runs"            : 1,
+        "runs"            : 200,
         "test_interval"   : 0,
-        "max_evaluations" : 50,
+        "max_evaluations" : 200,
         "function": {
-            "type"      : [["F1.0", "F1.1", "F1.2"], ["F1.3", "F1.4"]],
+            "type"      : [[], ["F1.0"]],
             "dimension" : 2,
             "domain"    : [-5, 5]
         },
@@ -27,7 +27,7 @@
         },
         "evaluator": {
             "type": "step_evaluator",
-            "file_path": "data/output/meta_random"
+            "root_path": "data/output/meta_random"
         },
         "visualizer": {
             "type": null
