@@ -19,6 +19,7 @@ def plot_confidence_interval(root_folder, values):
     plt.fill_between(range(y_values.shape[0]), ub, lb, alpha=.5)
                          #color=color, alpha=.5)
     # plot the mean on top
+
     plt.plot(mean_y_values, label=root_folder)
     plt.legend(loc='best')
 
@@ -26,7 +27,9 @@ def simple_regret(min_value, y_values):
     return abs(min_value - y_values)
 
 def best_regret(min_value, y_values):
-    best_y_values = np.array([[min(y_values[j, :i+1]) for i in range(len(y_values[0]))] for j in range(len(y_values))])
+    #best_y_values = np.array([[min(y_values[j, :i+1]) for i in range(len(y_values[0]))] for j in range(len(y_values))])
+
+    best_y_values = np.minimum.accumulate(y_values, axis=0)
     return abs(min_value - best_y_values)
 
 def cumulative_regret(min_value, y_values):
@@ -107,7 +110,7 @@ else:
 
         min_value, y_values = read_data(root_folder)
         plot_values = eval(method + "(min_value, y_values)")
-        plot_confidence_interval(root_folder, plot_values, available_colors[i])
+        plot_confidence_interval(root_folder, plot_values)
 
     plt.savefig(method + '.png', bbox_inches='tight')
     plt.clf()
