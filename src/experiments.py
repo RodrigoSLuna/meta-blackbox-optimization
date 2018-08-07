@@ -97,7 +97,7 @@ class CEU(Experiment):
             #CHOOSE POINT:
             new_x, hf = self.optimizer.next_point(self.curr_function.dimension, self.steps)
             new_x = self.curr_function.denormalize_x(new_x)
-
+        
             #EVALUATE IN F(X):
             new_y = self.curr_function(new_x)
 
@@ -111,7 +111,7 @@ class CEU(Experiment):
 
         self.steps = np.array(self.steps)
         self.info = np.array(self.info)
-
+        
         return self.max_evaluations
 
     def stop_condition(self, new_x, new_y):

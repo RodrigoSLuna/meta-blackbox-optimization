@@ -1,0 +1,54 @@
+{
+    "experiment": {
+        "type": "CEU",
+        "runs": 10,
+        "test_interval": 0,
+        "max_evaluations": 200,
+        "function": {
+            "type": [
+                [
+                    "F3.0",
+                    "F3.1",
+                    "F3.2",
+                    "F3.3",
+                    "F3.4"
+                ],
+                [
+                    "F1.0"
+                ]
+            ],
+            "dimension": 2,
+            "domain": [
+                -5,
+                5
+            ]
+        },
+        "optimizer": {
+            "type": "meta_model",
+            "points_strategy": "random",
+            "nb_points": 10,
+            "hist_strategy": "gagne",
+            "hist_init": "zero",
+            "size_hf": 5,
+            "best_point_strategy": "lowest",
+            "representation": {
+                "type": "dnn",
+                "path": "data/dnn/metamodel.h5"
+            }
+        },
+        "trainer": {
+            "type": "episodic_dnn",
+            "dnn_path": "data/dnn/metamodel.h5",
+            "data_path": "data/dataset/steps.npy",
+            "batch_size": 16,
+            "epochs": 128
+        },
+        "evaluator": {
+            "type": "step_evaluator",
+            "root_path": "data/output/meta_gagne_train_16_128"
+        },
+        "visualizer": {
+            "type": null
+        }
+    }
+}
