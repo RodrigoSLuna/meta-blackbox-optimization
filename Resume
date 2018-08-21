@@ -1,0 +1,45 @@
+http://cdn.intechopen.com/pdfs/30305/InTech-Surrogate_based_optimization.pdf
+
+Surrogate-Based Optimization
+
+    Design of experiments
+        - classic
+            full-factorial design
+            central composite design (CCD)
+            Box-Behnken
+            D-Optimal Design (DOD)
+        - modern
+            Latin Hypercube Sampling (LHS)
+            Orthogonal Array Design (OAD)
+            Uniform Design (UD)
+
+        An overview of the classic and modern DoE methods was presented by Giunta et al. (2001)
+
+    Surrogate models
+        RSM (polynomial Response Surface Model)
+        Kriging
+        RBFs (Radial Basis Functions)
+            - Decaying functions:
+                Gaussian (GAUSS)
+                Hardy's Inverse Multiquadric (HIMQ)
+            - Growing functions:
+                Power function (POW)
+                Thin Plate Spline (TPS)
+                Hardy's Multiquadric (HMQ)
+        Artificial Neural Network (ANN)  (Elanayar et al. 1994, Park et al. 1991)
+                Multiple Adaptive Regression Splines (MARS)
+                Support Vector Regression (SVR) (Smola & Schoelkopf 2004)
+
+    The readers are referred to read the paper by Wang & Shan (2007) and the books written by Keane et al. (2005) and by Forrester et al. (2008) for more description about surrogate modeling techniques
+
+    Infill criteria:
+        Searching Surrogate Model(s) (SSM) 
+        Expected Improvement (EI) 
+        Lower-Bounding Confidence (LCB)
+
+
+
+    Framework:
+    Han et al. (2010)
+
+    sample-point refinement
